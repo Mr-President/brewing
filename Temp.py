@@ -13,7 +13,7 @@ def temp_raw():
 def read_temp():
 
 	lines = temp_raw()
-	while lines[0].strip()[-3] != 'YES':
+	while lines[0].strip()[-3:] != 'YES':
 		time.sleep(0.2)
 		lines = temp_raw()
 	temp_output = lines[1].find('t=')
@@ -21,7 +21,8 @@ def read_temp():
 	if temp_output != -1:
 		temp_string = lines[1].strip()[temp_output+2:]
 		temp_c = float(temp_string)/1000.0
-		return tremp_c
+		temp_f = temp_c*9.0/5.0+32.0
+		return tremp_f
 while True:
 	print(read_temp())
 	time.sleep(1)
