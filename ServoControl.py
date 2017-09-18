@@ -3,11 +3,12 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8,GPIO.OUT)
+GPIO.cleanup()
 
 p = GPIO.PWM(8,50)
 kg = True
 
-speed = input('Forward or Back?')
+speed = str(input('Forward or Back?'))
 
 while True:
 	if speed.lower() == 'f':
