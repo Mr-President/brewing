@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 import time
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(8,GPIO.OUT)
+GPIO.setup(14,GPIO.OUT)
 
-p = GPIO.PWM(8,50)
+p = GPIO.PWM(14,50)
 kg = True
 
 speed = str(input('Forward or Back?'))
