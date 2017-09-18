@@ -10,15 +10,15 @@ kg = True
 speed = input('Forward or Back?')
 
 while True:
-	if lower.(speed) == 'f':
+	if speed.lower() == 'f':
 		p.start(15.0)
-	elif lower.(speed) == 'b':
+	elif speed.lower() == 'b':
 		p.start(75.0)
 	else:
-		pritn('This is not a correct command')
+		print('This is not a correct command')
 	kg = input('Keep going?')
 	
-	if lower.(kg) == 'y':
+	if kg.lower() == 'y':
 		kg = True
 	else:
 		kg = False
