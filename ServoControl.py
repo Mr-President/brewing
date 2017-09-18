@@ -5,12 +5,21 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8,GPIO.OUT)
 
 p = GPIO.PWM(8,50)
+kg = True
 
 speed = input('Forward or Back?')
 
-if str.lower(speed) == 'f':
-	p.start(10.0)
-elif str.lower(speed) == 'b':
-	p.start(75.0)
-else:
-	print('That is not a valid input, please use f for forward or b for back')
+while True:
+	if lower.(speed) == 'f':
+		p.start(15.0)
+	elif lower.(speed) == 'b':
+		p.start(75.0)
+	else:
+		pritn('This is not a correct command')
+	kg = input('Keep going?')
+	
+	if lower.(kg) == 'y':
+		kg = True
+	else:
+		kg = False
+GPIO.cleanup()
