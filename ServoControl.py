@@ -11,7 +11,7 @@ speed = str(input('Forward or Back?'))
 
 while True:
 	if speed.lower() == 'f':
-		p.start(15.0)
+		p.start(25.0)
 	elif speed.lower() == 'b':
 		p.start(75.0)
 	else:
