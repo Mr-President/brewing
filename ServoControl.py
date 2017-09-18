@@ -6,7 +6,7 @@ pwm = GPIO.PWM(03,50)
 pwm.start(0)
 
 def setangle(angle):
-  duty = angle / 18+2
+  duty = 75.0
   GPIO.output(03, True)
   pwm.ChangeDutyCycle(duty)
   sleep(10)
