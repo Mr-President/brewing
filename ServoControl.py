@@ -7,7 +7,7 @@ GPIO.setup(8,GPIO.OUT)
 p = GPIO.PWM(8,50)
 kg = True
 
-speed = str(input('Forward or Back?'))
+speed = raw_input('Forward or Back?')
 
 while True:
 	if speed.lower() == 'f':
