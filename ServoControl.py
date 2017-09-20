@@ -10,5 +10,5 @@ try:
     pwm.start(0)
     pwm.ChangeDutyCycle(7.5)
     sleep(10)    
-dInterrupt:
+except Interrupt:
   GPIO.cleanup()
