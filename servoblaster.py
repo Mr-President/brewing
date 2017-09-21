@@ -59,9 +59,3 @@ def increment(servo_n=2,direction=True,size=10):
 def stop():
     subprocess.call("killall servod" , shell=True)
 
-position(2,100)
-
-st = raw_input('would you like to stop?')
-
-if st == 'y':
-    stop()
