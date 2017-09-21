@@ -29,11 +29,11 @@ install_dir = "/Home/Pibits/ServoBlaster/"
 idle_timeout = 1000 #Time before no pulse is sent to servo after last command, in milliseconds
 initial_width = 140 #The initial position of the servo when initialized
 #Max/min values are easy for one servo, but has to be implemented in the main script for more than one
-#max_width = 2350
+max_width = 20000
 #min_width = 800
 
 #Initialize the servo/servos. If you need max/min_width, then include them in the arguments (ex add max_width=max_width). Ex servoblaster.initialize([29]) or servoblaster.initialize([29],300,100) Must use brackets when initializing, even if you're only using one servo.
-def initialize(servo_pins,idle_timeout=idle_timeout,initial_width=initial_width):
+def initialize(servo_pins,idle_timeout=idle_timeout,initial_width=initial_width,max_width = max_width):
     pins = ','.join(map(str, servo_pins))
 	
 	#Here's what you're setting up servod with. Again, if max/min_width is needed, pass them here. Check servod --help to find out how
