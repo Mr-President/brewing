@@ -23,7 +23,7 @@ import subprocess
 
 #Servoblaster install directory
 #Example: "/home/pi/system/Pibits/ServoBlaster/"
-install_dir = Home/Pibits/ServoBlaster/
+install_dir = Home/Pibits/ServoBlaster
 
 #Deafult values
 idle_timeout = 1000 #Time before no pulse is sent to servo after last command, in milliseconds
