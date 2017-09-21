@@ -23,8 +23,7 @@ import subprocess
 
 #Servoblaster install directory
 #Example: "/home/pi/system/Pibits/ServoBlaster/"
-install_dir = /Home/PiBits/ServoBlaster/
-
+install_dir = /Home/Pibits/ServoBlaster/
 
 #Deafult values
 idle_timeout = 1000 #Time before no pulse is sent to servo after last command, in milliseconds
@@ -46,11 +45,11 @@ def initialize(servo_pins,idle_timeout=idle_timeout,initial_width=initial_width)
     #    subprocess.call("echo %d=%d > /dev/servoblaster" % (i,initial_width), shell=True)
 
 #This function allows you to set the servo at a certain position. Default servo_n and pos are set, but when called, your own values are possible. Ex servoblaster.position(1,100) 
-def position(servo_n=0,pos=initial_width):
+def position(servo_n=2,pos=initial_width):
         subprocess.call("echo %d=%d > /dev/servoblaster" % (servo_n,pos), shell=True)
 
 #This function allows you to increment the servo position. Direction is altered with True/False. Default servo_n, direction and step-size are set, but when called, your own values are possible. Ex servoblaster.increment(0,False,5)
-def increment(servo_n=0,direction=True,size=10):
+def increment(servo_n=2,direction=True,size=10):
     if direction is True:
         subprocess.call("echo %d=+%d > /dev/servoblaster" % (servo_n,size), shell=True)
     elif direction is False:
@@ -60,3 +59,9 @@ def increment(servo_n=0,direction=True,size=10):
 def stop():
     subprocess.call("killall servod" , shell=True)
 
+position(2,100)
+
+st = raw_input('would you like to stop?')
+
+if st == 'y':
+    stop()
