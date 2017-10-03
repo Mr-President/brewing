@@ -5,8 +5,15 @@
 import os
 import time
 import Temp
+dir = #place the directory of the text files here
 
-def get_dat():
+def check_file(Filename):
+  if Filename ==  Check:
+  else:
+    f = open(Filename, "w+") #opens a new txt file by the name that was input. This only occurs when the filename doesnt already appear in the directory
+    n = 0
+def get_dat("Filename",n):
+  raw = 
   
 
 
