@@ -3,7 +3,6 @@ import time
 import datetime
 os.system('modprobe w1-gpio') # load the drivers for the GPIO board
 os.system('modprobe w1-therm') # load the drivers for the temeprature sensor
-central = pytz.timezone("US/Central")
 
 temp_sensor = '/sys/bus/w1/devices/28-0417030a23ff/w1_slave' # define serial number and location of temperature file
 
