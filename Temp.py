@@ -23,7 +23,7 @@ def read_temp():
 		temp_string = lines[1].strip()[temp_output+2:] #pulls the temperature using the index from read temp
 		temp_f = (float(temp_string)/1000.0)*9.0/5.0+32.0
 		a = datetime.datetime.now().strftime("%H:%M:%S")
-		c= datetime.datetime.now().strftime("%d-%m-%y")
+		c= datetime.datetime.now().strftime("-%d-%m-%y")
 		b = a + datetime.datetime(0,-18000)
 		d = c + datetime.datetime(0,-18000)
 		return [temp_f,b,d] #puts temp with time stampmp
