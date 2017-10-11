@@ -3,6 +3,7 @@ import time
 import datetime
 os.system('modprobe w1-gpio') # load the drivers for the GPIO board
 os.system('modprobe w1-therm') # load the drivers for the temeprature sensor
+central = pytz.timezone("US/Central")
 
 temp_sensor = '/sys/bus/w1/devices/28-0417030a23ff/w1_slave' # define serial number and location of temperature file
 
@@ -22,7 +23,7 @@ def read_temp():
 	if temp_output != -1: #if it does not find t then it will return -1 and the script will wait here
 		temp_string = lines[1].strip()[temp_output+2:] #pulls the temperature using the index from read temp
 		temp_f = (float(temp_string)/1000.0)*9.0/5.0+32.0
-		return [temp_f,datetime.datetime.now().strftime("%H:%M:%S"),datetime.datetime.now().strftime("%d-%m-%y")] #puts temp with time stampmp
+		return [temp_f,central.localize(datetime.datetime.now()).astimezone(utc).strftime("%H:%M:%S"),datetime.datetime.now().strftime("%d-%m-%y")] #puts temp with time stampmp
 while True:
 	print(read_temp())
 	time.sleep(5)
