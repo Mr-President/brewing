@@ -27,7 +27,3 @@ def read_temp():
 		b = a + datetime.timedelta(0,-18000)
 		d = c + datetime.timedelta(0,-18000)
 		return [temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
-while True:
-	print(read_temp())
-	time.sleep(5)
-# just runs it while until its not for now
