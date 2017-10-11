@@ -23,7 +23,11 @@ def read_temp():
 	if temp_output != -1: #if it does not find t then it will return -1 and the script will wait here
 		temp_string = lines[1].strip()[temp_output+2:] #pulls the temperature using the index from read temp
 		temp_f = (float(temp_string)/1000.0)*9.0/5.0+32.0
-		return [temp_f,central.localize(datetime.datetime.now()).astimezone(utc).strftime("%H:%M:%S"),datetime.datetime.now().strftime("%d-%m-%y")] #puts temp with time stampmp
+		a = datetime.datetime.now().strftime("%H:%M:%S")
+		c= datetime.datetime.now().strftime("%d-%m-%y")
+		b = a + datetime.datetime(0,0,0,0,0,-5)
+		d = c + datetime.datetime(0,0,0,0,0,-5)
+		return [temp_f,b,d] #puts temp with time stampmp
 while True:
 	print(read_temp())
 	time.sleep(5)
