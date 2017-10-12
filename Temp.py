@@ -21,7 +21,7 @@ def read_temp():
 
 	if temp_output != -1: #if it does not find t then it will return -1 and the script will wait here
 		temp_string = lines[1].strip()[temp_output+2:] #pulls the temperature using the index from read temp
-		temp_f = (float(temp_string)/1000.0)*9.0/5.0+32.0
+		temp_f = str((float(temp_string)/1000.0)*9.0/5.0+32.0)
 		a = datetime.datetime.now()
 		c= datetime.datetime.now()
 		b = a + datetime.timedelta(0,-18000)
