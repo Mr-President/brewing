@@ -13,7 +13,7 @@ def inti(dir):
 		file = file
 	else:
 		file += ".txt"
-		fi = dir + file
+	fi = dir + file
 	f = open("fi","w+")
 	f.write("Temp, Time, Date")
 	f.close()
