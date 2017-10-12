@@ -24,5 +24,5 @@ def write(dir):
 		a = read_temp()
 		f.write(a)
 		time.sleep(60)
-
-
+while true:
+	write(dir)
