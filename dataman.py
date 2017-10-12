@@ -5,6 +5,7 @@
 import os
 import time
 import Temp
+import sys
 dir = "/home/pi/brewing/temps/"
 
 def inti(dir):
@@ -15,7 +16,7 @@ def inti(dir):
 		file += ".txt"
 	fi = dir + file
 	f = open("fi","w+")
-	f.write("Temp, Time, Date")
+	f.write("Temp, Time, Date\n")
 	f.close()
 	return fi
 def write(dir):
@@ -24,6 +25,8 @@ def write(dir):
 	while True:
 		a = ",".join(Temp.read_temp())+"\n"
 		f.write(a)
-		time.sleep(60)
+		time.sleep(2)
 while True:
 	write(dir)
+	except KeyboardInterrupt:
+		print "Shutting Down"
