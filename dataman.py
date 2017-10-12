@@ -21,8 +21,8 @@ def write(dir):
 	fi = inti(dir)
 	f = open(fi,"w+")
 	while True:
-		a = Temp.read_temp()
-		f.write(c.join(a))
+		a = ",".join(Temp.read_temp())
+		f.write(a)
 		time.sleep(60)
 while True:
 	write(dir)
