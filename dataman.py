@@ -29,4 +29,4 @@ def write(dir):
 while True:
 	write(dir)
 	except KeyboardInterrupt:
-		print "Shutting Down"
+		exit()
