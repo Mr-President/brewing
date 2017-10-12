@@ -20,9 +20,9 @@ def inti(dir):
 def write(dir):
 	inti(dir)
 	f = open(fi,"w+")
-	while true:
+	while True:
 		a = read_temp()
 		f.write(a)
 		time.sleep(60)
-while true:
+while True:
 	write(dir)
