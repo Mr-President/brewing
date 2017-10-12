@@ -5,15 +5,24 @@
 import os
 import time
 import Temp
-dir = #place the directory of the text files here
+dir = "/home/pi/brewing/temps"
 
-def check_file(Filename):
-  if Filename ==  Check:
-  else:
-    f = open(Filename, "w+") #opens a new txt file by the name that was input. This only occurs when the filename doesnt already appear in the directory
-    n = 0
-def get_dat("Filename",n):
-  raw = 
-  
+def inti(dir):
+	file = str(raw_input("What Would you "))
+	if ".txt" in file == true:
+		file = file
+	else:
+		file += ".txt"
+		fi = dir + file
+	f = open("file","w+")
+	f.close()
+	return fi
+def write(dir):
+	inti(dir)
+	f = open(fi,"w+")
+	while true:
+		a = read_temp()
+		f.write(a)
+		time.sleep(60)
 
 
