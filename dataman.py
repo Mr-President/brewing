@@ -5,7 +5,6 @@
 import os
 import time
 import Temp
-import sys
 dir = "/home/pi/brewing/temps/"
 
 def inti(dir):
@@ -28,5 +27,3 @@ def write(dir):
 		time.sleep(2)
 while True:
 	write(dir)
-	except KeyboardInterrupt:
-		exit()
