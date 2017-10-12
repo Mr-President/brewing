@@ -24,6 +24,6 @@ def write(dir):
 	while True:
 		a = ",".join(Temp.read_temp())+"\n"
 		f.write(a)
-		time.sleep(2)
+		time.sleep(10)
 while True:
 	write(dir)
