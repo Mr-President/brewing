@@ -18,7 +18,7 @@ def inti(dir):
 	f.close()
 	return fi
 def write(dir):
-	fi = inti(dir)ls
+	fi = inti(dir)
 	f = open(fi,"w+")
 	while True:
 		a = read_temp()
