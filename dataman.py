@@ -5,7 +5,7 @@
 import os
 import time
 import Temp
-dir = "/home/pi/brewing/temps"
+dir = "/home/pi/brewing/temps/"
 
 def inti(dir):
 	file = str(raw_input("What Would you like to name this file?"))
