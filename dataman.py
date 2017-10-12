@@ -8,13 +8,14 @@ import Temp
 dir = "/home/pi/brewing/temps"
 
 def inti(dir):
-	file = str(raw_input("What Would you "))
+	file = str(raw_input("What Would you like to name this file?"))
 	if ".txt" in file == true:
 		file = file
 	else:
 		file += ".txt"
 		fi = dir + file
-	f = open("file","w+")
+	f = open("fi","w+")
+	f.write("Temp, Time, Date")
 	f.close()
 	return fi
 def write(dir):
@@ -22,7 +23,7 @@ def write(dir):
 	f = open(fi,"w+")
 	while True:
 		a = ",".join(Temp.read_temp())
-		f.write(a)
+		f.write(a\n)
 		time.sleep(60)
 while True:
 	write(dir)
