@@ -27,4 +27,4 @@ def read_temp():
 		c= datetime.datetime.now()
 		b = a + datetime.timedelta(0,-18000)
 		d = c + datetime.timedelta(0,-18000)
-		return [setpoing,temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
+		return [setpoint,temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
