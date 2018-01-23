@@ -25,5 +25,3 @@ def write(dir):
 		a = ",".join(Temp.read_temp())+"\n"
 		f.write(a)
 		time.sleep(60)
-while True:
-	write(dir)
