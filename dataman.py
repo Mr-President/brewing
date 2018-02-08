@@ -5,21 +5,21 @@
 import os
 import time
 import Temp
-dir = "/home/pi/brewing/temps/"
+dire = "/home/pi/brewing/temps/"
 
-def inti(dir):
+def inti(dire):
 	file = str(raw_input("What Would you like to name this file?"))
 	if ".txt" in file == true:
 		file = file
 	else:
 		file += ".txt"
-	fi = dir + file
+	fi = dire + file
 	f = open("fi","w+")
 	f.write("Temp, Time, Date\n")
 	f.close()
 	return fi
-def write(dir):
-	fi = inti(dir)
+def write(dier):
+	fi = inti(dire)
 	f = open(fi,"w+")
 	while True:
 		a = ",".join(Temp.read_temp())+"\n"
