@@ -25,7 +25,7 @@ if ".txt" in statfil == True:
 elif ".txt" in statfil == False:
 	datfil = dir_path + datfil +".txt"
 
-pin = raw_input("What pin are should be used?") # get output pin for heater control
+pin = int(raw_input("What pin are should be used?")) # get output pin for heater control
 if type(pin) != int: # check if input is a int
 	while type(pin) != int: # if it is not an int dont proceed until it is
 		pin = raw_input("Please enter only numbers.")
@@ -86,9 +86,11 @@ while True:
 		exit()
 	except:
 		print "Unexpected Error Occured"
-		setpit(False)
+		setpi(False)
 		GPIO.cleanup()
 		stat = "Error occured at " + datetime.datetime.now() + "\n"
 		with open("statfil","w+") as g:
 			g.write(stat)
 		exit()
+finally:
+	GPIO.cleanup()
