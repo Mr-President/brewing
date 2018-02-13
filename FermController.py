@@ -34,8 +34,8 @@ try:
 	GPIO.setup(pin,GPIO.OUT) # set up the specified GPIO pin
 	
 	def gettime(lshutoff): # get the differential time time from last shut off
-	timed = datetime.datetime.now() - lshutoff #provides time difference
-	return timed # returns time difference
+		timed = datetime.datetime.now() - lshutoff #provides time difference
+		return timed # returns time difference
 
 	def setpi(bol): #turns the controller on or off and prints the state with the time
 		if bol == True: #turns
