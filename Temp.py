@@ -13,7 +13,7 @@ def temp_raw(): #function to pull in raw temperature
 	f.close() #closes data file
 	return lines # returns the raw data as a line
 
-def read_temp():
+def read_temp(setpoint):
 	lines = temp_raw()
 	while lines[0].strip()[-3:] != 'YES': #waits for the device to read that it is connected stripping three from the end of the first line
 		time.sleep(0.2)
