@@ -15,7 +15,7 @@ def gettime(lshutoff):
 def setpi(bol,pin):
 	a = datetime.datetime.now()
 	if bol == True:
-		GPIO.output(pin,GPIO.HIGH)
+		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = True
@@ -77,7 +77,7 @@ while True:
 				f.write(temdat)
 		if hstat == True:
 			if curt > setpoint:
-				if setpoint - curt > overt:
+				if curt - setpoint > overt:
 					setpi(False,pin)
 			elif td >= maxtd:
 				setpi(False,pin)
@@ -89,8 +89,8 @@ while True:
 				time.sleep(5)
 				setpi(True,pin)
 		elif hstat == False:
-			if curt > setpoint:
-				if curt - setpoint > undert:
+			if setpoint > curt:
+				if setpoint - cut > undert:
 					setpi(True,pin)
 		time.sleep(10)
 	except KeyboardInterrupt:
