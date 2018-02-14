@@ -48,15 +48,15 @@ hstat = False
 while True:
 	try:
 		datfil = str(raw_input("What would you like to name the data file? ")
-		if datfil.endswith('txt')
-			datfil = dir_path + datfil
+		if datfil.endswith('.txt'):
+			datfil = dir_path + "/" +datfil
 		elif not datfil.endswith('.txt'):
-			datfil = dir_path + datfil + ".txt"
+			datfil = dir_path + "/" + datfil + ".txt"
 		statfil = raw_input("What would you like to name the status file? ")
 		if statfil.endswith('.txt'):
-			statfil = dir_path + statfil
+			statfil = dir_path + "/" + statfil
 		elif not statfil.endswith('.txt')
-			statfil = dir_path + statfil + ".txt"
+			statfil = dir_path + statfil + "/" + ".txt"
 	except:
 		print "You have enetered an invalid character in a file name please try again."
 		continue
