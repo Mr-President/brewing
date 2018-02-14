@@ -47,9 +47,10 @@ hstat = False
 
 while True:
 	try:
-		datfil= str(raw_input("What would you like to name the data file? ")
+		datfil = str(raw_input("What would you like to name the data file? ")
 		if ".txt" in datfil == True
-			datfil = dir_path + datfil
+			a = dir_path + datfil
+			datfil = a
 		elif ".txt" in datfil == False
 			datfil = dir_path + datfil + ".txt"
 		statfil = raw_input("What would you like to name the status file? ")
