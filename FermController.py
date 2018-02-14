@@ -69,7 +69,7 @@ while True:
 	try:
 		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
-		curt = int(round(float(temdat[1],0)))
+		curt = int(round(float(temdat[1]),0))
 		if td >= saverate:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
