@@ -48,15 +48,14 @@ hstat = False
 while True:
 	try:
 		datfil = str(raw_input("What would you like to name the data file? ")
-		if ".txt" in datfil == True
-			a = dir_path + datfil
-			datfil = a
-		elif ".txt" in datfil == False
+		if datfil.endswith('txt')
+			datfil = dir_path + datfil
+		elif not datfil.endswith('.txt'):
 			datfil = dir_path + datfil + ".txt"
 		statfil = raw_input("What would you like to name the status file? ")
-		if ".txt" in datfil == True
+		if statfil.endswith('.txt'):
 			statfil = dir_path + statfil
-		elif ".txt" in statfil == False
+		elif not statfil.endswith('.txt')
 			statfil = dir_path + statfil + ".txt"
 	except:
 		print "You have enetered an invalid character in a file name please try again."
@@ -79,10 +78,10 @@ while True:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
 				f.write(temdat)
-		if hstat == True
-			if curt -  setpoint >= overt
+		if hstat == True:
+			if curt -  setpoint >= overt:
 				setpi(False,pin)
-			elif td >= maxtd
+			elif td >= maxtd:
 				setpi(False,pin)
 				print "Cycling to preent auto shuttoff"
 				a = datetime.datetime.now()
@@ -91,7 +90,7 @@ while True:
 					g.write(stat)
 				time.sleep(5)
 				setpi(True,pin)
-		elif hstat == False
+		elif hstat == False:
 			if setpoint - curt >= undert:
 				setpi(True,pin)
 		time.sleep(10)
