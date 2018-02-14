@@ -8,8 +8,9 @@ saverate = 10
 maxtd = 60
 
 def gettime(lshutoff):
-	timed = datetime.datetime.now() - lshutoff
-	timed = divmod(timed.total_seconds(),60)
+	b = datetime.datetime.now()
+	timed = b.total_seconds() - lshutoff.total_seconds()
+	timed = divmod(timed,60)
 	return timed
 def setpi(bol,pin):
 	a = datetime.datetime.now()
