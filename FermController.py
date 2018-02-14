@@ -46,7 +46,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 hstat = False
 
 while True:
-	try:sudp
+	try:
 		datfil= str(raw_input("What would you like to name the data file? ")
 		if ".txt" in datfil == True:
 			datfil = dir_path + datfil
