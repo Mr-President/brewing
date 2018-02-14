@@ -76,23 +76,23 @@ while True:
 				f.write(temdat)
 		if hstat == True:
 			if curt -  setpoint >= overt:
-				setpi(False)
+				setpi(False,pin)
 			elif td >= maxtd:
-				setpi(False)
+				setpi(False,pin)
 				print "Cycling to preent auto shuttoff"
 				a = datetime.datetime.now()
 				stat = "Power cycled at " + a.strftime("%d/%m/%Y %H:%M:%S")
 				with open(statfil,"w+") as g:
 					g.write(stat)
 				time.sleep(5)
-				setpit(True)
+				setpi(True,pin)
 		elif hstat == False:
 			if setpoint - curt >= undert:
-				setpi(True)
+				setpi(True,pin)
 		time.sleep(10)
 	except KeyboardInterrupt:
 		print "You have ended control"
-		setpi(False)
+		setpi(False,pin)
 		GPIO.cleanup()
 		a = dateime.datetime.now()
 		stat = "Program terminate at " + a.strftime("%d/%m/%Y %H:%M:%S")
@@ -106,5 +106,5 @@ while True:
 		with open(statfil,"w+") as g:
 			g.write(stat)
 	finally:
-		setpi(False)
+		setpi(False,pin)
 		GPIO.cleanup()
