@@ -75,8 +75,9 @@ while True:
 			with open(datfil,"w+") as f:
 				f.write(temdat)
 		if hstat == True:
-			if curt -  setpoint >= overt:
-				setpi(False,pin)
+			if curt > setpoint:
+				if setpoint - curt > overt:
+					setpi(False,pin)
 			elif td >= maxtd:
 				setpi(False,pin)
 				print "Cycling to preent auto shuttoff"
@@ -87,8 +88,9 @@ while True:
 				time.sleep(5)
 				setpi(True,pin)
 		elif hstat == False:
-			if setpoint - curt >= undert:
-				setpi(True,pin)
+			if curt > setpoint:
+				if curt - setpoint > undert:
+					setpi(True,pin)
 		time.sleep(10)
 	except KeyboardInterrupt:
 		print "You have ended control"
