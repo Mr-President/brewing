@@ -103,12 +103,12 @@ while True:
 		with open(statfil,"w+") as g:
 			g.write(stat)
 		exit()
-	except:
-		EmailTest.error()
-		a = dateime.datetime.now()
-		stat = "Error occured at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		with open(statfil,"w+") as g:
-			g.write(stat)
+	#except:
+		#EmailTest.error()
+		#a = dateime.datetime.now()
+		#stat = "Error occured at " + a.strftime("%d/%m/%Y %H:%M:%S")
+		#with open(statfil,"w+") as g:
+			#g.write(stat)
 	finally:
 		setpi(False,pin)
 		GPIO.cleanup()
