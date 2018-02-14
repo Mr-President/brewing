@@ -65,10 +65,6 @@ while True:
 lshutoff = datetime.datetime.now()
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(pin,GPIO.OUT)
-f = open(datfil,"w+")
-f.close()
-g = open(statfil,"w+")
-g.close
 while True:
 	try:
 		td = gettime(lshutoff)
