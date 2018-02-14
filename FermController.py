@@ -55,7 +55,7 @@ while True:
 		statfil = raw_input("What would you like to name the status file? ")
 		if statfil.endswith('.txt'):
 			statfil = dir_path + "/" + statfil
-		elif not statfil.endswith('.txt')
+		elif not statfil.endswith('.txt'):
 			statfil = dir_path + statfil + "/" + ".txt"
 	except:
 		print "You have enetered an invalid character in a file name please try again."
