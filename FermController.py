@@ -8,7 +8,7 @@ saverate = 10
 maxtd = 60
 
 def gettime(lshutoff):
-	timed = dattime.datetime.now() - lshutoff
+	timed = datetime.datetime.now() - lshutoff
 	timed = divmod(timed.total_seconds(),60)
 	return timed
 def setpi(bol,pin):
@@ -46,8 +46,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 hstat = False
 
 while True:
-	try:
-		datfil= raw_input("What would you like to name the data file? ")
+	try:sudp
+		datfil= str(raw_input("What would you like to name the data file? ")
 		if ".txt" in datfil == True:
 			datfil = dir_path + datfil
 		elif ".txt" in datfil == False:
