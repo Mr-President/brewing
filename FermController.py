@@ -47,7 +47,7 @@ hstat = False
 
 while True:
 	try:
-		datfil = str(raw_input("What would you like to name the data file? ")
+		datfil = str(raw_input("What would you like to name the data file? "))
 		if datfil.endswith('.txt'):
 			datfil = dir_path + "/" +datfil
 		elif not datfil.endswith('.txt'):
