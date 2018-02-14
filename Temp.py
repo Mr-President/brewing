@@ -5,7 +5,6 @@ os.system('modprobe w1-gpio') # load the drivers for the GPIO board
 os.system('modprobe w1-therm') # load the drivers for the temeprature sensor
 
 temp_sensor = '/sys/bus/w1/devices/28-0417030a23ff/w1_slave' # define serial number and location of temperature file
-setpoint = 0.0
 
 def temp_raw(): #function to pull in raw temperature
 	f = open(temp_sensor, 'r') #assigns the raw temperature information to the value f
