@@ -95,7 +95,7 @@ except KeyboardInterrupt:
 	setpi(False, pin)
 	GPIO.cleanup()
 	a = datetime.datetime.now()
-	stat = "Program terminated at " a.strftime("%d\%m\%Y %H:%M:%S")
+	stat = "Program terminated at " + a.strftime("%d\%m\%Y %H:%M:%S")
 	with open (statfil, "w+") as g:
 		g.write(stat)
 	exit()
@@ -104,6 +104,6 @@ except:
 	GPIO.cleanup()
 	EmailTest.error()
 	a = datetime.datetime.now()
-	stat = "Error occured at " a.strftime("%d\%m\%Y %H:%M:%S")
+	stat = "Error occured at " + a.strftime("%d\%m\%Y %H:%M:%S")
 	with open(statfil,"w+") as g:
 		g.write(stat)
