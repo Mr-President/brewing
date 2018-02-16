@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 import EmailTest
 saverate = 10
 maxtd = 60
-
+GPIO.setmode(GPIO.BOARD)
 def gettime(lshutoff):
 	b = datetime.datetime.now()
 	timed = b.total_seconds() - lshutoff.total_seconds()
@@ -15,6 +15,7 @@ def gettime(lshutoff):
 def setpi(bol,pin):
 	a = datetime.datetime.now()
 	if bol:
+		GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
@@ -22,13 +23,16 @@ def setpi(bol,pin):
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
+		GPIO.cleanup()
 	elif not bol:
+		GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = False
 		with open(statfil,"w+") as g:
 			g.write(stat)
+		GPIO.cleanup()
 
 
 
@@ -42,7 +46,6 @@ while True:
 		print "You have entered and invalid character. Only enter numbers."
 		continue
 	break
-
 dir_path = os.path.dirname(os.path.realpath(__file__))
 hstat = False
 
@@ -64,8 +67,6 @@ while True:
 	break
 	
 lshutoff = datetime.datetime.now()
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(pin,GPIO.OUT)
 while True:
 	try:
 		td = gettime(lshutoff)
@@ -96,7 +97,6 @@ while True:
 	except KeyboardInterrupt:
 		print "You have ended control"
 		setpi(False,pin)
-		GPIO.cleanup()
 		a = dateime.datetime.now()
 		stat = "Program terminate at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		with open(statfil,"w+") as g:
