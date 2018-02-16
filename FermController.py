@@ -100,6 +100,8 @@ except KeyboardInterrupt:
 		g.write(stat)
 	exit()
 except:
+	setpi(False,pin)
+	GPIO.cleanup()
 	EmailTest.error()
 	a = datetime.datetime.now()
 	stat = "Error occured at " a.strftime("%d\%m\%Y %H:%M:%S")
