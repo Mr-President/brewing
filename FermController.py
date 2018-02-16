@@ -15,7 +15,6 @@ def gettime(lshutoff):
 def setpi(bol,pin):
 	a = datetime.datetime.now()
 	if bol:
-		#GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
@@ -23,17 +22,13 @@ def setpi(bol,pin):
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
-		#GPIO.cleanup()
 	elif not bol:
-		#GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = False
 		with open(statfil,"w+") as g:
 			g.write(stat)
-		#GPIO.cleanup()
-
 
 
 while True:
@@ -68,8 +63,8 @@ while True:
 	break
 	
 lshutoff = datetime.datetime.now()
-while True:
-	try:
+try:
+	while True:
 		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
 		curt = int(float(temdat[1]))
@@ -95,21 +90,21 @@ while True:
 				if setpoint - curt > undert:
 					setpi(True,pin)
 		time.sleep(10)
-	except KeyboardInterrupt:
-		print "You have ended control"
-		setpi(False,pin)
-		GPIO.cleanup()
-		a = dateime.datetime.now()
-		stat = "Program terminate at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		with open(statfil,"w+") as g:
-			g.write(stat)
-		exit()
-	#except:
-		#EmailTest.error()
-		#a = dateime.datetime.now()
-		#stat = "Error occured at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		#with open(statfil,"w+") as g:
+except KeyboardInterrupt:
+	print "You have ended control"
+	setpi(False,pin)
+	GPIO.cleanup()
+	a = dateime.datetime.now()
+	stat = "Program terminate at " + a.strftime("%d/%m/%Y %H:%M:%S")
+	with open(statfil,"w+") as g:
+		g.write(stat)
+	exit()
+except:
+	EmailTest.error()
+	a = dateime.datetime.now()
+	stat = "Error occured at " + a.strftime("%d/%m/%Y %H:%M:%S")
+	with open(statfil,"w+") as g:
 			#g.write(stat)
-	finally:
-		setpi(False,pin)
-		GPIO.cleanup()
+finally:
+	setpi(False,pin)
+	GPIO.cleanup()
