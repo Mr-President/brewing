@@ -9,8 +9,8 @@ maxtd = 60
 GPIO.setmode(GPIO.BOARD)
 def gettime(lshutoff):
 	b = datetime.datetime.now()
-	timed = b.total_seconds() - lshutoff.total_seconds()
-	timed = divmod(timed,60)
+	timed = b - lshutoff
+	timed = divmod(timed.seconds,60)
 	return timed
 def setpi(bol,pin):
 	a = datetime.datetime.now()
