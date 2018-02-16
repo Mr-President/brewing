@@ -106,4 +106,4 @@ except:
 	a = datetime.datetime.now()
 	stat = "Error occured at " + a.strftime("%d\%m\%Y %H:%M:%S")
 	with open(statfil,"w+") as g:
-		#g.write(stat)
+		g.write(stat)
