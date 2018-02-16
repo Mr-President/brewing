@@ -15,7 +15,7 @@ def gettime(lshutoff):
 def setpi(bol,pin):
 	a = datetime.datetime.now()
 	if bol:
-		GPIO.setup(pin,GPIO.OUT)
+		#GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
@@ -23,16 +23,16 @@ def setpi(bol,pin):
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
-		GPIO.cleanup()
+		#GPIO.cleanup()
 	elif not bol:
-		GPIO.setup(pin,GPIO.OUT)
+		#GPIO.setup(pin,GPIO.OUT)
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = False
 		with open(statfil,"w+") as g:
 			g.write(stat)
-		GPIO.cleanup()
+		#GPIO.cleanup()
 
 
 
@@ -97,6 +97,7 @@ while True:
 	except KeyboardInterrupt:
 		print "You have ended control"
 		setpi(False,pin)
+		GPIO.cleanup()
 		a = dateime.datetime.now()
 		stat = "Program terminate at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		with open(statfil,"w+") as g:
