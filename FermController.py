@@ -46,6 +46,7 @@ while True:
 		print "You have entered and invalid character. Only enter numbers."
 		continue
 	break
+GPIO.setup(pin, GPIO.OUT)
 dir_path = os.path.dirname(os.path.realpath(__file__))
 hstat = False
 
