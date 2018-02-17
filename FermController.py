@@ -4,6 +4,7 @@ import time
 import Temp
 import RPi.GPIO as GPIO
 import EmailTest
+hstat = True
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
@@ -64,7 +65,6 @@ while True:
 	break
 	
 try:
-	hstat = True
 	while True:
 		print hstat
 		td = getttime(lshutoff)
