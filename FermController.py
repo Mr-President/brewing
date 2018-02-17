@@ -20,7 +20,6 @@ t = read_fint()
 heater = Heater(pin,t,setpoint,undert,overt)
 try:
 	while True:
-		pdb.set_trace()
 		t = read_fint()
 		heater.update(t)
 		time.sleep(5)
