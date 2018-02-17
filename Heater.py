@@ -6,7 +6,7 @@ import datetime
 
 class Heater:
 
-	def __int__(self, hstat = False, temp = 0,setp = 0,overt=0 ,undert=3, pin,tdmax = 60,lshutoff = datetime.datetime.now()):
+	def __int__(self, hstat = False, temp = 0,setp = 0,overt=0 ,undert=3, pin,tdmax = 60,):
 		self.pin = pin
 		self.status = hstat
 		self.temperature = temp
@@ -14,7 +14,7 @@ class Heater:
 		self.undershoot = undert
 		self.overshoot = overt
 		self.deltatmax = tdmax
-		self.lastshutoff = lshutoff
+		self.lastshutoff = datetime.datetime.now()
 		self.delta = 0
 		GPIO.setmode(GPIO.BOARD)
 		GPIO.setup(self.pin, GPIO.OUT)
