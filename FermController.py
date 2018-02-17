@@ -12,7 +12,7 @@ def gettime(lshutoff):
 	b = datetime.datetime.now()
 	timed = b - lshutoff
 	timed = divmod(timed.seconds,60)
-	return timed
+	return timed[0]
 def setpi(bol,pin):
 	a = datetime.datetime.now()
 	if bol == True:
