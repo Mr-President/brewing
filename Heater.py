@@ -51,8 +51,11 @@ class Heater:
 					self.heateroff()
 			elif self.delta > self.deltatmax:
 				self.heateroff()
+				print "power cycle"
 				time.sleep(2)
 				self.heateron()
+			else:
+				pass
 
 		elif not self.status:
 			if self.setpoint > curt:
