@@ -5,7 +5,7 @@ import Temp
 import RPi.GPIO as GPIO
 import EmailTest
 import pdb
-hstat = bool(False)
+hstat = False
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
