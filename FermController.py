@@ -16,7 +16,7 @@ while True: #all this shit gets user inputs for setpoints undert overt and outpu
 
 try:
 	t = read_fint()
-	heater = Heater(self,False,t,setpoint,overt,undert,pin)
+	heater = Heater(self,t,setpoint,undert,overt,pin)
 	pdb.set_trace()
 	while True:
 		t = read_fint()
