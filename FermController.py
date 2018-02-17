@@ -19,17 +19,17 @@ def setpi(bol,pin):
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
+		global hstat = True
 		return hstat
 		lshutoff = datetime.datetime.now()
-		hstat = True
 		with open(statfil,"w+") as g:
 			g.write(stat)
 	elif bol == False:
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
+		global hstat = False
 		return hstat
-		hstat = False
 		with open(statfil,"w+") as g:
 			g.write(stat)
 
@@ -64,30 +64,37 @@ while True:
 		continue
 	break
 	
+lshutoff = datetime.datetime.now()
 try:
 	while True:
 		print hstat
-		td = getttime(lshutoff)
+		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
-		curt = int(float(tempdat[1]))
-		if hstat:
+		curt = int(float(temdat[1]))
+		print curt
+		if td >= saverate:
+			temdat = ",".join(temdat)
+			with open(datfil,"w+") as f:
+				f.write(temdat)
+		if hstat == True:
 			if curt > setpoint:
 				if curt - setpoint > overt:
 					setpi(False,pin)
-		elif not hstat:
+			elif td >= maxtd:
+				setpi(False,pin)
+				print "Cycling to prevennt auto shuttoff"
+				a = datetime.datetime.now()
+				stat = "Power cycled at " + a.strftime("%d/%m/%Y %H:%M:%S")
+				with open(statfil,"w+") as g:
+					g.write(stat)
+				time.sleep(5)
+				setpi(True,pin)
+		elif hstat == False:
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
-		elif td > saverate:
-			a = ",".join(tempdat)
-			with open(datfil,"w+") as f:
-				f.write(a)
-		elif td > maxtd:
-			setpi(False,pin)
-			a.datetime.datetime.now()
-			stat = "Power cycled to prevent shutoff at " + a.strftime("%d/%m/%Y %H:%M:%S")
-			with open(statfil,"w+") as g:
-				g.write(stat)
+		print hstat
+		time.sleep(10)
 except KeyboardInterrupt:
 	print "You have ended control"
 	setpi(False, pin)
