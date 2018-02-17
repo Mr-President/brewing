@@ -4,6 +4,7 @@ import time
 import Temp
 import RPi.GPIO as GPIO
 import EmailTest
+import pdb
 hstat = True
 saverate = 10
 maxtd = 60
@@ -66,13 +67,11 @@ while True:
 	
 lshutoff = datetime.datetime.now()
 try:
+	pbd.set_trace()
 	while True:
-		print hstat
 		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
 		curt = int(float(temdat[1]))
-		print curt
-		print td
 		if td >= saverate:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
