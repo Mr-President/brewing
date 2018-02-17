@@ -72,6 +72,7 @@ try:
 		temdat = Temp.read_temp(setpoint)
 		curt = int(float(temdat[1]))
 		print curt
+		print td
 		if td >= saverate:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
