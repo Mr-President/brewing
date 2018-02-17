@@ -65,6 +65,7 @@ while True:
 lshutoff = datetime.datetime.now()
 try:
 	while True:
+		print hstat
 		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
 		curt = int(float(temdat[1]))
