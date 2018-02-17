@@ -67,7 +67,7 @@ while True:
 	
 lshutoff = datetime.datetime.now()
 try:
-	pbd.set_trace()
+	pdb.set_trace()
 	while True:
 		td = gettime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
