@@ -89,10 +89,14 @@ try:
 					g.write(stat)
 				time.sleep(5)
 				setpi(True,pin)
+			else:
+				pass
 		elif hstat == False:
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
+		else:
+			pass
 		print hstat
 		time.sleep(10)
 except KeyboardInterrupt:
