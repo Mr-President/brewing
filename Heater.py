@@ -24,7 +24,7 @@ class Heater:
 		dt = self.lastshutoff - a
 		delt = divmod(dt.seconds,60)
 		self.delta = delt[0]
-		if hstat:
+		if self.status:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
 					heateron()
@@ -33,7 +33,7 @@ class Heater:
 				time.sleep(2)
 				heateron()
 
-		elif not hstat:
+		elif not self.status:
 			if self.setpoint > curt:
 				if self.setpoint - curt > self.undershoot:
 					heateroff()
