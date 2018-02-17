@@ -39,7 +39,8 @@ class Heater:
 
 	def setovert(self,overt):
 		self.overshoot = overt
-		def update(self,curt):
+		
+	def update(self,curt):
 		a = datetime.datetime.now()
 		dt = self.lastshutoff - a
 		delt = divmod(dt.seconds,60)
@@ -48,10 +49,10 @@ class Heater:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
 					heateron()
-			elif self.delta > self.deltatmax:
-				heateroff()
-				time.sleep(2)
-				heateron()
+		elif self.delta > self.deltatmax:
+			heateroff()
+			time.sleep(2)
+			heateron()
 
 		elif not self.status:
 			if self.setpoint > curt:
