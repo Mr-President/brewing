@@ -45,6 +45,7 @@ class Heater:
 		dt = self.lastshutoff - a
 		delt = divmod(dt.seconds,60)
 		self.delta = delt[0]
+		print self.delta
 		if self.status:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
