@@ -48,14 +48,14 @@ class Heater:
 		if self.status:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
-					self.heateron()
-		elif self.delta > self.deltatmax:
-			self.heateroff()
-			time.sleep(2)
-			self.heateron()
+					self.heateroff()
+			elif self.delta > self.deltatmax:
+				self.heateroff()
+				time.sleep(2)
+				self.heateron()
 
 		elif not self.status:
 			if self.setpoint > curt:
 				if self.setpoint - curt > self.undershoot:
-					self.heateroff()
+					self.heateron()
 
