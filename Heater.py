@@ -46,8 +46,8 @@ class Heater:
 
 	def getdeltat(self):
 		a = datetime.datetime.now()
-		dt = self.lastshutoff.seconds - a.seconds
-		self.delta = dt
+		dt = divmod(self.lastshutoff.seconds - a.seconds,60)
+		self.delta = dt[0]
 
 	def getstat(self):
 		return self.status
