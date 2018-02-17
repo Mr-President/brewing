@@ -44,7 +44,6 @@ class Heater:
 		a = datetime.datetime.now()
 		dt = a - self.lastshutoff
 		delt = divmod(dt.seconds,60)
-		print delt
 		self.delta = delt[0]
 		if self.status:
 			if curt > self.setpoint:
