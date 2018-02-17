@@ -43,6 +43,7 @@ class Heater:
 	def update(self,curt):
 		a = datetime.datetime.now()
 		dt = self.lastshutoff - a
+		print dt
 		delt = divmod(dt.seconds,60)
 		self.delta = delt[0]
 		print self.delta
