@@ -23,7 +23,7 @@ class Heater:
 		a = datetime.datetime.now()
 		dt = self.lastshutoff - a
 		delt = divmod(dt.seconds,60)
-		self.delta = del[0]
+		self.delta = delt[0]
 		if hstat:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
