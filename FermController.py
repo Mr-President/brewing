@@ -76,7 +76,7 @@ try:
 			#temdat = ",".join(temdat)
 			#with open(datfil,"w+") as f:
 				#f.write(temdat)
-		elif hstat == "true":
+		if hstat == "true":
 			if curt > setpoint:
 				if curt - setpoint > overt:
 					setpi(False,pin)
