@@ -72,10 +72,10 @@ try:
 		temdat = Temp.read_temp(setpoint)
 		curt = int(float(temdat[1]))
 		print curt
-		if td >= saverate:
-			temdat = ",".join(temdat)
-			with open(datfil,"w+") as f:
-				f.write(temdat)
+		#if td >= saverate:
+			#temdat = ",".join(temdat)
+			#with open(datfil,"w+") as f:
+				#f.write(temdat)
 		elif hstat == "true":
 			if curt > setpoint:
 				if curt - setpoint > overt:
