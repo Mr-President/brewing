@@ -25,9 +25,9 @@ try:
 		time.sleep(5)
 except KeyboardInterrupt: #what to do if I hit ctrl c
 	print "You have ended control"
-	Heater.heateroff()
+	heater.heateroff()
 	GPIO.cleanup()
 except: #everhting else
-	Heater.heateroff()
+	heater.heateroff()
 	GPIO.cleanup()
 	EmailTest.error()
