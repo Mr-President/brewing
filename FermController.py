@@ -4,7 +4,7 @@ import time
 import Temp
 import RPi.GPIO as GPIO
 import EmailTest
-hstat = False
+hstat = "false"
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
@@ -15,19 +15,19 @@ def gettime(lshutoff):
 	return timed
 def setpi(bol,pin):
 	a = datetime.datetime.now()
-	if bol == True:
+	if bol == "true":
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		hstat = True
+		hstat = "true"
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
-	elif bol == False:
+	elif bol == "false":
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		hstat = False
+		hstat = "false"
 		with open(statfil,"w+") as g:
 			g.write(stat)
 
@@ -74,7 +74,7 @@ try:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
 				f.write(temdat)
-		if hstat == True:
+		if hstat == "true":
 			if curt > setpoint:
 				if curt - setpoint > overt:
 					setpi(False,pin)
@@ -87,7 +87,7 @@ try:
 					g.write(stat)
 				time.sleep(5)
 				setpi(True,pin)
-		elif hstat == False:
+		elif hstat == "false":
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
