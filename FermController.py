@@ -4,7 +4,6 @@ import time
 import Temp
 import RPi.GPIO as GPIO
 import EmailTest
-hstat = "false"
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
@@ -19,17 +18,17 @@ def setpi(bol,pin):
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		hstat = "true"
 		return hstat
 		lshutoff = datetime.datetime.now()
+		hstat = True
 		with open(statfil,"w+") as g:
 			g.write(stat)
 	elif bol == False:
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
-		hstat = "false"
 		return hstat
+		hstat = False
 		with open(statfil,"w+") as g:
 			g.write(stat)
 
@@ -64,37 +63,31 @@ while True:
 		continue
 	break
 	
-lshutoff = datetime.datetime.now()
 try:
+	hstat = True
 	while True:
 		print hstat
-		td = gettime(lshutoff)
+		td = getttime(lshutoff)
 		temdat = Temp.read_temp(setpoint)
-		curt = int(float(temdat[1]))
-		print curt
-		#if td >= saverate:
-			#temdat = ",".join(temdat)
-			#with open(datfil,"w+") as f:
-				#f.write(temdat)
-		if hstat == "true":
+		curt = int(float(tempdat[1]))
+		if hstat:
 			if curt > setpoint:
 				if curt - setpoint > overt:
 					setpi(False,pin)
-			elif td >= maxtd:
-				setpi(False,pin)
-				print "Cycling to prevennt auto shuttoff"
-				a = datetime.datetime.now()
-				stat = "Power cycled at " + a.strftime("%d/%m/%Y %H:%M:%S")
-				with open(statfil,"w+") as g:
-					g.write(stat)
-				time.sleep(5)
-				setpi(True,pin)
-		elif hstat == "false":
+		elif not hstat:
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
-		print hstat
-		time.sleep(10)
+		elif td > saverate:
+			a = ",".join(tempdat)
+			with open(datfil,"w+") as f:
+				f.write(a)
+		elif td > maxtd:
+			setpi(False,pin)
+			a.datetime.datetime.now()
+			stat = "Power cycled to prevent shutoff at " + a.strftime("%d/%m/%Y %H:%M:%S")
+			with open(statfil,"w+") as g:
+				g.write(stat)
 except KeyboardInterrupt:
 	print "You have ended control"
 	setpi(False, pin)
