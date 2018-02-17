@@ -26,7 +26,7 @@ class Heater:
 		self.delta = dt[0]
 
 	def update(self,curt):
-		getdeltat(self)
+		getdeltat()
 		if hstat:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
