@@ -93,6 +93,7 @@ try:
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
+		print hstat
 		time.sleep(10)
 except KeyboardInterrupt:
 	print "You have ended control"
