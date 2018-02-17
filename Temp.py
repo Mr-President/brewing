@@ -29,7 +29,7 @@ def read_temp(setpoint):
 		return [str(setpoint),temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
 def read_fint():
 	lines = temp_raw()
-	while lines[0].stripe()[-3:] != 'YES': #waits until the device reads that it is connected
+	while lines[0].strip()[-3:] != 'YES': #waits until the device reads that it is connected
 		time.sleept(0.2)
 		lines = temp_raw()
 	temp_output = lines[1].find('t=') #looks for the temperature three two spaces behind this index is the point the temperatuer is read
