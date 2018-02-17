@@ -29,4 +29,4 @@ def read_temp():
 		return [temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
 def read_fint():
 	temps = read_temp()
-	return int(temps[0])
+	return int(float(temps[0]))
