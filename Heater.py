@@ -20,7 +20,7 @@ class Heater:
 		GPIO.setup(self.pin, GPIO.OUT)
 
 	def update(self,curt):
-		getdeltat()
+		getdeltat(self)
 		if hstat:
 			if curt > self.setpoint:
 				if curt - self.setpoint > self.overshoot:
