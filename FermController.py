@@ -5,7 +5,7 @@ import Temp
 import RPi.GPIO as GPIO
 import EmailTest
 import pdb
-hstat = False
+hstat = bool(False)
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
@@ -76,7 +76,7 @@ try:
 			temdat = ",".join(temdat)
 			with open(datfil,"w+") as f:
 				f.write(temdat)
-		if hstat == True:
+		if hstat:
 			if curt > setpoint:
 				if curt - setpoint > overt:
 					setpi(False,pin)
@@ -91,7 +91,7 @@ try:
 				setpi(True,pin)
 			else:
 				pass
-		elif hstat == False:
+		elif not hstat:
 			if setpoint > curt:
 				if setpoint - curt > undert:
 					setpi(True,pin)
