@@ -20,6 +20,7 @@ def setpi(bol,pin):
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = "true"
+		return hstat
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
@@ -28,6 +29,7 @@ def setpi(bol,pin):
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		hstat = "false"
+		return hstat
 		with open(statfil,"w+") as g:
 			g.write(stat)
 
