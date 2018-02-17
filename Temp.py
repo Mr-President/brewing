@@ -12,7 +12,7 @@ def temp_raw(): #function to pull in raw temperature
 	f.close() #closes data file
 	return lines # returns the raw data as a line
 
-def read_temp(setpoint):
+def read_temp():
 	lines = temp_raw()
 	while lines[0].strip()[-3:] != 'YES': #waits for the device to read that it is connected stripping three from the end of the first line
 		time.sleep(0.2)
@@ -26,15 +26,7 @@ def read_temp(setpoint):
 		c= datetime.datetime.now()
 		b = a + datetime.timedelta(0,-18000)
 		d = c + datetime.timedelta(0,-18000)
-		return [str(setpoint),temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
+		return [temp_f,b.strftime("%H:%M:%S"),d.strftime("%d-%m-%y")] #puts temp with time stampmp
 def read_fint():
-	lines = temp_raw()
-	while lines[0].strip()[-3:] != 'YES': #waits until the device reads that it is connected
-		time.sleept(0.2)
-		lines = temp_raw()
-	temp_output = lines[1].find('t=') #looks for the temperature three two spaces behind this index is the point the temperatuer is read
-
-	if temp_output != -1:
-		temp_string = lines[1].strip()[temp_output +2] #strips out teh temp
-		temp_f = int(float(temp_string)/1000.0*9.0/5.0+32.0) #converts to a float to convert to f from C and then back to a int rounding error is not an issue
-		return temp_f
+	temps = read_temp()
+	return int(temps[0])
