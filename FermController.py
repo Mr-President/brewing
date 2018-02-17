@@ -4,6 +4,7 @@ import time
 import Temp
 import RPi.GPIO as GPIO
 import EmailTest
+hstat = False
 saverate = 10
 maxtd = 60
 GPIO.setmode(GPIO.BOARD)
@@ -43,7 +44,6 @@ while True:
 	break
 GPIO.setup(pin, GPIO.OUT)
 dir_path = os.path.dirname(os.path.realpath(__file__))
-hstat = False
 
 while True:
 	try:
