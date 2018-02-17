@@ -15,7 +15,7 @@ def gettime(lshutoff):
 	return timed
 def setpi(bol,pin):
 	a = datetime.datetime.now()
-	if bol == "true":
+	if bol == True:
 		GPIO.output(pin, GPIO.HIGH)
 		print "Heat turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned on at " + a.strftime("%d/%m/%Y %H:%M:%S")
@@ -23,7 +23,7 @@ def setpi(bol,pin):
 		lshutoff = datetime.datetime.now()
 		with open(statfil,"w+") as g:
 			g.write(stat)
-	elif bol == "false":
+	elif bol == False:
 		GPIO.output(pin, GPIO.LOW)
 		print "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
 		stat = "Heater turned off at " + a.strftime("%d/%m/%Y %H:%M:%S")
