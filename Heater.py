@@ -18,6 +18,12 @@ class Heater:
 		self.delta = 0
 		GPIO.setmode(GPIO.BOARD)
 		GPIO.setup(self.pin, GPIO.OUT)
+	
+	
+	def getdeltat(self):
+		a = datetime.datetime.now()
+		dt = divmod(self.lastshutoff.seconds - a.seconds,60)
+		self.delta = dt[0]
 
 	def update(self,curt):
 		getdeltat(self)
@@ -43,11 +49,6 @@ class Heater:
 	def heateroff(self):
 		GPIO.output(self.pin,GPIO.LOW)
 		self.status = False
-
-	def getdeltat(self):
-		a = datetime.datetime.now()
-		dt = divmod(self.lastshutoff.seconds - a.seconds,60)
-		self.delta = dt[0]
 
 	def getstat(self):
 		return self.status
