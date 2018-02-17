@@ -2,6 +2,7 @@ import time
 from Temp import read_fint
 import EmailTest
 import pdb
+import RPi.GPIO as GPIO
 from Heater import Heater
 tdm = 60
 
