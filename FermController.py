@@ -14,10 +14,9 @@ while True: #all this shit gets user inputs for setpoints undert overt and outpu
 		print "You have entered and invalid character. Only enter numbers."
 		continue
 	break
-
+t = read_fint()
+heater = Heater(pin,t,setpoint,undert,overt)
 try:
-	t = read_fint()
-	heater = Heater(pin,t,setpoint,undert,overt)
 	pdb.set_trace()
 	while True:
 		t = read_fint()
