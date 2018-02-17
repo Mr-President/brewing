@@ -27,7 +27,7 @@ except KeyboardInterrupt: #what to do if I hit ctrl c
 	print "You have ended control"
 	heater.heateroff()
 	GPIO.cleanup()
-except: #everhting else
-	heater.heateroff()
-	GPIO.cleanup()
-	EmailTest.error()
+#except: #everhting else
+	#heater.heateroff()
+	#GPIO.cleanup()
+	#EmailTest.error()
