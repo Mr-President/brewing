@@ -3,6 +3,7 @@ from Temp import read_fint
 import EmailTest
 import pdb
 from Heater import Heater
+tdm = 60
 
 while True: #all this shit gets user inputs for setpoints undert overt and output pin
 	try:
@@ -15,7 +16,7 @@ while True: #all this shit gets user inputs for setpoints undert overt and outpu
 		continue
 	break
 t = read_fint()
-heater = Heater(pin,t,setpoint,undert,overt)
+heater = Heater(pin,t,setpoint,undert,overt,tdm)
 try:
 	pdb.set_trace()
 	while True:
