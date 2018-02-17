@@ -6,9 +6,9 @@ import datetime
 
 class Heater:
 
-	def __int__(self,temp, setp, undert, overt, pin, hstat = False, tdmax = 60,):
+	def __int__(self, pin, status,temp,setp,undert,overt,tdmax = 60)
 		self.pin = pin
-		self.status = hstat
+		self.status = status
 		self.temperature = temp
 		self.setpoint = setp
 		self.undershoot = undert

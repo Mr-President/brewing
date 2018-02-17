@@ -2,7 +2,8 @@ import time
 from Temp import read_fint
 import EmailTest
 import pdb
-import Heater
+from Heater import Heater
+
 while True: #all this shit gets user inputs for setpoints undert overt and output pin
 	try:
 		setpoint = int(raw_input("What shoudl the setpoint be? "))# setpoint is setpoint
@@ -13,9 +14,10 @@ while True: #all this shit gets user inputs for setpoints undert overt and outpu
 		print "You have entered and invalid character. Only enter numbers."
 		continue
 	break
-t = read_fint()
-heater = Heater.Heater(t,setpoint,undert,overt,pin)
+
 try:
+	t = read_fint()
+	heater = Heater(pin,t,setpoint,undert,overt)
 	pdb.set_trace()
 	while True:
 		t = read_fint()
@@ -23,9 +25,9 @@ try:
 		time.sleep(5)
 except KeyboardInterrupt: #what to do if I hit ctrl c
 	print "You have ended control"
-	heater.heateroff()
+	Heater.heateroff()
 	GPIO.cleanup()
 except: #everhting else
-	heater.heateroff()
+	Heater.heateroff()
 	GPIO.cleanup()
 	EmailTest.error()
