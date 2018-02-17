@@ -22,7 +22,7 @@ class Heater:
 	def update(self,curt):
 		a = datetime.datetime.now()
 		dt = self.lastshutoff - a
-		del = divmod(dt.seconds,60)
+		delt = divmod(dt.seconds,60)
 		self.delta = del[0]
 		if hstat:
 			if curt > self.setpoint:
